@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <uk.ac.ox.robots.InfiniTAM.InfiniTAMView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/infinitamView"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <ToggleButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_fusion"
+        android:id="@+id/toggleButton_fusion"
+        android:checked="true"
+        android:textOn="@string/button_fusionOn"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textOff="@string/button_fusionOff" />
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="#000000"
+        android:id="@+id/linearLayout">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton_resetView"
+            android:layout_gravity="center_vertical"
+            android:background="@android:drawable/ic_menu_view"
+            android:minHeight="50dp"
+            android:minWidth="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_reset"
+            android:id="@+id/button_reset"
+            android:background="@android:drawable/ic_menu_delete"
+            android:minHeight="50dp"
+            android:minWidth="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/imageButton_saveMesh"
+            android:layout_marginEnd="100dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton_saveMesh"
+            android:contentDescription="Save"
+            android:background="@android:drawable/ic_menu_set_as"
+            android:minHeight="50dp"
+            android:minWidth="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="100dp"
+            android:layout_alignParentRight="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton_save"
+            android:contentDescription="Save"
+            android:background="@android:drawable/ic_menu_save"
+            android:minHeight="50dp"
+            android:minWidth="50dp"
+            android:layout_marginLeft="600dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton_stop"
+            android:background="@android:drawable/ic_lock_power_off"
+            android:minHeight="50dp"
+            android:minWidth="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imageButton_resetView"
+            android:layout_marginStart="102dp"
+            android:tint="#d50000"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView_memory"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="#000000">
+
+    </LinearLayout>
+
+</RelativeLayout>

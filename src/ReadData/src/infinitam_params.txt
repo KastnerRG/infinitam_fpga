@@ -1,0 +1,50 @@
+device_type          = cpu
+opencl_device        = cpu
+opencl_algo          = 0
+use_swapping         = 0
+approximate_raycast  = 0
+use_bilateral_filter = 0
+tracker_type         = imu_init
+no_hierarchy_levels  = -1
+tracking_regime      = default
+icp_quality          = 4
+color_skip_points    = 1
+icp_dist_threshold   = 0.01
+icp_error_threshold  = 0.001
+voxel_size           = 0.01
+mu                   = 0.02
+use_max_w            = 0
+max_w                = 100
+
+pose_from_tango      = 1
+
+headless             = 0
+blocking             = 0
+client_address       = server
+client_port          = 4531
+
+
+############################
+Note: write comments here
+No sign equal in comments!
+############################
+- device_type  : cpu, gpu, opencl
+
+- opencl_device: cpu, gpu, fpga
+
+- opencl_algo: 0 (Scene Integration), 1 (Raycasting), 2 (Integration + Raycasting kernels), 3 (Combined kernel), 4 (ICP), 5 (Integration + Raycast + ICP), 6 (Combined + ICP)
+Note: #2 uses 2 different AOCX on FPGA, #5 and #6 use a single AOCX on FPGA
+
+- tracker_type: color, icp, ren, imu, imu_only, wicp, imu_init
+
+- no_hierarchy_levels: < 1 (use default), 1, 2, 3, ...
+
+- tracking_regime: default (only if levels is < 1), both_only, translation_only, rotation_only, both_translation, both_rotation
+  ('both' means translation+rotation combined, '_only' means for all levels, 'both_rotation' means half levels both and half rotation)
+
+- headless: 0 (UI), 1 (headless or network client)
+
+- blocking: 0 (read data in parallel of processing), 1 (wait until data are processed to read next)
+
+- client_address: network address, or "server" if you activate the --server option and want to get the address from any client that connects to the server
+

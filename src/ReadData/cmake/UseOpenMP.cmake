@@ -1,0 +1,1 @@
+../../InfiniTAM/cmake/UseOpenMP.cmake

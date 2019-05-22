@@ -1,0 +1,5 @@
+ID,param_raycast_interp,param_raycast_refine,param_combine,param_3,param_4,param_5,param_6,estim_throughput_0,logic,mem,ram,dsp,fmax,fit
+baseline0,1,1,0,0,0,0,0,0,0,0,0,0,0,Y
+baseline1,0,1,0,0,0,0,0,0,0,0,0,0,0,Y
+baseline2,0,0,0,0,0,0,0,0,0,0,0,0,0,Y
+baseline3,0,0,1,0,0,0,0,0,0,0,0,0,0,Y

@@ -1,0 +1,5 @@
+
+# Ignore all .o files in all subdirectories
+**/*.o
+
+build

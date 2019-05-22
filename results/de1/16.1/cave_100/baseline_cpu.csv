@@ -1,0 +1,5 @@
+ID_x,param_raycast_interp,param_raycast_refine,param_combine,estim_logic,estim_reg,estim_mem,estim_dsp,estim_throughput_0,logic,mem,ram,dsp,fmax,fit,ID_int,ID_y,Tracking1,Tracking2,Raycast,Raycast_CreateDepths,Raycast_CreatePointCloud,Raycast_CreateICPMaps,Raycast_ForwardRender,Fusion,Fusion_allocate,Fusion_integrate,Total_time,Unnamed: 12
+baseline0,1,1,0,0,0,0,0,0,0,0,0,0,0,Y,0,baseline0_timing.csv,299.154772152,0.0,608.719063291,44.9684556962,0.0,563.636202532,0.0,704.494088608,64.4829620253,639.935949367,1635.35708861,
+baseline1,0,1,0,0,0,0,0,0,0,0,0,0,0,Y,1,baseline1_timing.csv,311.91221519,0.0,461.866911392,46.6823797468,0.0,415.06464557,0.0,718.925443038,65.233721519,653.612329114,1516.3343038,
+baseline2,0,0,0,0,0,0,0,0,0,0,0,0,0,Y,2,baseline2_timing.csv,304.959113924,0.0,483.431075949,55.0303037975,0.0,428.286113924,0.0,828.667835443,72.9970759494,755.590708861,1639.21177215,
+baseline3,0,0,1,0,0,0,0,0,0,0,0,0,0,Y,3,baseline3_timing.csv,329.922683544,0.0,87.6115316456,0.0,0.0,87.5771012658,0.0,1670.45392405,69.260556962,1601.10886076,2110.89772152,

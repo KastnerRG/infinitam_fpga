@@ -1,0 +1,15 @@
+1. Add KNOB for enabling/disabling interpolation for point and normal
+2. Simplify mat-vec multiplications (matVecMul).
+3. Inverse intrinsics to avoid division.
+4. Remove unnecessary initialization to 0 for localHessian / localNabla.
+4. POTENTIAL KNOB: Moving localHessian / localNabla / A outside of the loop seems to consistently increase logic/memory utilization. Not done for now.
+5. Work on a local copy of sumNabla / sumHessian / sumF / noValidPoints.
+6. Add KNOB to unroll Hessian / Nabla calculation.
+7. Add KNOB to remove some branches related to shortIterations (except when filling array A).
+8. Add KNOB to unroll sum Nabla and Hessian.
+9. Added shift register for sum Nabla, and added that option to previous KNOB.
+10. Added shift register for sum Hessian, and added that option to previous KNOB.
+11. Added shift register for sumF when either sum Nabla or sum Hessian is using shift register.
+12. Flatten X and Y loop to index XY. Keep X and Y and increment them conditionally.
+13. Replaced continue with nested if statements.
+14. Replaced the loop by work-items, with pipes and a second kernel to accumulate.

@@ -1,0 +1,1 @@
+../../InfiniTAM/cmake/cuda_compute_capability.c

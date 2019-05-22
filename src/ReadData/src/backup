@@ -1,0 +1,201 @@
+
+//-------------------------------------------------------
+template<typename PointType>
+double
+computeCloudResolution (const typename pcl::PointCloud<PointType>::ConstPtr &cloud)
+//-------------------------------------------------------
+{
+  double res = 0.0;
+  int n_points = 0;
+  int nres;
+  std::vector<int> indices (2);
+  std::vector<float> sqr_distances (2);
+  pcl::search::KdTree<PointType> tree;
+  tree.setInputCloud (cloud);
+
+  for (size_t i = 0; i < cloud->size (); ++i)
+  {
+    if (! pcl_isfinite ((*cloud)[i].x))
+    {
+      continue;
+    }
+    //Considering the second neighbor since the first is the point itself.
+    nres = tree.nearestKSearch (i, 2, indices, sqr_distances);
+    if (nres == 2)
+    {
+      res += sqrt (sqr_distances[1]);
+      ++n_points;
+    }
+  }
+  if (n_points != 0)
+  {
+    res /= n_points;
+  }
+  return res;
+}
+
+//-------------------------------------------------------
+template<typename PointT>
+void computeNormals(
+		typename pcl::PointCloud<PointT>::Ptr cloud,
+		typename pcl::PointCloud<pcl::Normal>::Ptr cloud_normals,
+		float radius = 0.03) // radius 3cm
+//-------------------------------------------------------
+{
+	// Create the normal estimation class, and pass the input dataset to it
+	NormalEstimation<PointT, pcl::Normal> ne;
+	ne.setInputCloud (cloud);
+
+	// Use all neighbors in a sphere of radius
+	ne.setRadiusSearch (radius);
+
+	// Compute the features
+	ne.compute (*cloud_normals);
+}
+
+//-------------------------------------------------------
+template<typename PointT, typename FeatureT, typename FeatureEstimationT>
+void estimateFeatures(
+		typename pcl::PointCloud<PointT>::Ptr cloud,
+		pcl::PointCloud<pcl::Normal>::Ptr cloud_normals,
+		pcl::PointCloud<FeatureT>& features,
+		float radius = 0.05)
+//-------------------------------------------------------
+{
+	FeatureEstimationT fest;
+	fest.setRadiusSearch (radius);
+	fest.setInputCloud (cloud);
+	fest.setInputNormals (cloud_normals);
+	fest.compute (features);
+}
+
+
+
+
+//			<< "--poses                      Estimate pose between point clouds\n"
+
+
+//-------------------------------------------------------
+int main (int argc, char** argv)
+//-------------------------------------------------------
+{
+	// ...
+
+	bool calcPoses = (console::find_argument(argc, argv, "--poses") >= 0);
+	cout << (calcPoses? "": "Not ") << "Calculating Poses" << endl;
+	
+	
+	// ...
+	
+	
+
+	PointCloud<PointXYZ>::Ptr        prev_points_ptr  (new PointCloud<PointXYZ>);
+	PointCloud<Normal>::Ptr          prev_normals_ptr (new PointCloud<Normal>);
+	PointCloud<FPFHSignature33>::Ptr prev_features_ptr(new PointCloud<FPFHSignature33>);
+
+	PointCloud<PointXYZ>&        prev_points   = *prev_points_ptr;
+	PointCloud<Normal>&          prev_normals  = *prev_normals_ptr;
+	PointCloud<FPFHSignature33>& prev_features = *prev_features_ptr;
+
+	Eigen::Vector4f referencePoint(0,0,0,1);
+	
+	
+	// ...
+	
+	
+        //double resolution = computeCloudResolution<PointXYZ>(points_ptr);
+        //cout << "Resolution = " << resolution << endl;
+
+
+    	PointCloud<Normal>::Ptr          normals_ptr (new PointCloud<Normal>);
+    	PointCloud<FPFHSignature33>::Ptr features_ptr(new PointCloud<FPFHSignature33>);
+    	PointCloud<Normal>&          normals  = *normals_ptr;
+    	PointCloud<FPFHSignature33>& features = *features_ptr;
+	
+	
+	// ...
+	
+	
+	    if(calcPoses && prev_points.empty())
+        {
+        	//computeNormals<PointXYZ>(points_ptr, normals_ptr, 0.05);
+        	//estimateFeatures<PointXYZ, FPFHSignature33, FPFHEstimation<PointXYZ,Normal,FPFHSignature33> >
+        	//(points_ptr, normals_ptr, features, 0.08);
+			cout << referencePoint.transpose() << endl;
+        }
+        else if(calcPoses && !prev_points.empty())
+        {
+        	//computeNormals<PointXYZ>(points_ptr, normals_ptr, 0.05);
+        	//estimateFeatures<PointXYZ, FPFHSignature33, FPFHEstimation<PointXYZ,Normal,FPFHSignature33> >
+        	//(points_ptr, normals_ptr, features, 0.08);
+
+			//cout << features.size() << " features / " << points.size() << " points" << endl;
+
+
+        	//SampleConsensusPrerejective<PointXYZ,PointXYZ,FPFHSignature33> align;
+        	//align.setInputSource (prev_points_ptr);
+        	//align.setSourceFeatures (prev_features_ptr);
+        	//align.setInputTarget (points_ptr);
+        	//align.setTargetFeatures (features_ptr);
+        	//align.setMaximumIterations (50000); // Number of RANSAC iterations
+        	//align.setNumberOfSamples (3); // Number of points to sample for generating/prerejecting a pose
+        	//align.setCorrespondenceRandomness (5); // Number of nearest features to use
+        	//align.setSimilarityThreshold (0.8f); // Polygonal edge length similarity threshold
+        	//align.setMaxCorrespondenceDistance (2.5f * resolution); // Inlier threshold
+        	//align.setInlierFraction (0.25f); // Required inlier fraction for accepting a pose hypothesis
+
+        	//PointCloud<PointXYZ> temp;
+        	//align.align(temp);
+        	//if (align.hasConverged ())
+        	//{
+        	//	Eigen::Matrix4f transformation = align.getFinalTransformation ();
+        	//	pcl::console::print_info ("    | %6.3f %6.3f %6.3f | \n", transformation (0,0), transformation (0,1), transformation (0,2));
+        	//	pcl::console::print_info ("R = | %6.3f %6.3f %6.3f | \n", transformation (1,0), transformation (1,1), transformation (1,2));
+        	//	pcl::console::print_info ("    | %6.3f %6.3f %6.3f | \n", transformation (2,0), transformation (2,1), transformation (2,2));
+        	//	pcl::console::print_info ("\n");
+        	//	pcl::console::print_info ("t = < %0.3f, %0.3f, %0.3f >\n", transformation (0,3), transformation (1,3), transformation (2,3));
+        	//	pcl::console::print_info ("\n");
+        	//	pcl::console::print_info ("Inliers: %i/%i\n", align.getInliers ().size (), prev_points_ptr->size ());
+        	//}
+        	//else
+        	//{
+        	//	cout << "Did not converge!" << endl;
+        	//}
+
+
+
+
+
+			IterativeClosestPoint<PointXYZ, PointXYZ> icp;
+			icp.setInputSource(prev_points_ptr);
+			icp.setInputTarget(points_ptr);
+			icp.setMaxCorrespondenceDistance(0.05);
+			icp.setMaximumIterations(70);
+			icp.setTransformationEpsilon(1e-8);
+			icp.setEuclideanFitnessEpsilon(1);
+
+			PointCloud<PointXYZ> temp;
+			icp.align(temp);
+        	if (icp.hasConverged ())
+        	{
+        		Eigen::Matrix4f transformation = icp.getFinalTransformation ();
+				referencePoint = transformation * referencePoint;
+				cout << referencePoint.transpose() << endl;
+        		//pcl::console::print_info ("    | %6.3f %6.3f %6.3f | \n", transformation (0,0), transformation (0,1), transformation (0,2));
+        		//pcl::console::print_info ("R = | %6.3f %6.3f %6.3f | \n", transformation (1,0), transformation (1,1), transformation (1,2));
+        		//pcl::console::print_info ("    | %6.3f %6.3f %6.3f | \n", transformation (2,0), transformation (2,1), transformation (2,2));
+        		//pcl::console::print_info ("\n");
+        		//pcl::console::print_info ("t = < %0.3f, %0.3f, %0.3f >\n", transformation (0,3), transformation (1,3), transformation (2,3));
+        		//pcl::console::print_info ("\n");
+        	}
+        	else
+        	{
+        		cout << "Did not converge!" << endl;
+        	}
+        }
+
+    	prev_points   = points;
+    	prev_normals  = normals;
+    	prev_features = features;
+	
+}

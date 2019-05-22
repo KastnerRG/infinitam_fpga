@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/editText_optionsVoxelSize"
+        android:text="10"
+        android:selectAllOnFocus="true"
+        android:layout_alignTop="@+id/textView_voxelSize"
+        android:layout_toEndOf="@+id/textView_voxelSize" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_ok"
+        android:id="@+id/button_optionsOk"
+        android:textSize="30sp"
+        android:layout_below="@+id/seekBar_icpQuality"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_voxelSize"
+        android:id="@+id/textView_voxelSize"
+        android:textSize="20sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_alignParentStart="true" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seekBar_icpQuality"
+        android:layout_alignStart="@+id/editText_optionsVoxelSize"
+        android:max="15"
+        android:progress="4"
+        android:indeterminate="false"
+        android:layout_toStartOf="@+id/textView_icpQualityNum"
+        android:layout_below="@+id/editText_optionsVoxelSize"
+        android:layout_alignEnd="@+id/editText_optionsVoxelSize" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_icpQuality"
+        android:id="@+id/textView_icpQuality"
+        android:textSize="20sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_below="@+id/editText_optionsVoxelSize"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="4"
+        android:id="@+id/textView_icpQualityNum"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/editText_optionsVoxelSize"
+        android:layout_toStartOf="@+id/editText_optionsVoxelSize"
+        android:layout_marginRight="5dp" />
+
+</RelativeLayout>

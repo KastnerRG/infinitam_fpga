@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button_reset">Reset</string>
+    <string name="button_fusion">Fusion</string>
+    <string name="button_fusionOn">Fusion</string>
+    <string name="button_fusionOff">Fusion</string>
+    <string name="button_save">Save</string>
+    <string name="button_ok">Ok</string>
+    <string name="label_voxelSize">Voxel size (mm)</string>
+    <string name="label_icpQuality">ICP quality</string>
+</resources>

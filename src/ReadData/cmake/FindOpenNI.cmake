@@ -1,0 +1,1 @@
+../../InfiniTAM/cmake/FindOpenNI.cmake
