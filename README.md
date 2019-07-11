@@ -12,6 +12,14 @@ The repository is organized as follows:
 * [SD Card Image](sd_card_image) to run the code on the Terasic DE1 board.
 
 
+## Paper
+
+```
+FPGA Architectures for Dense SLAM
+Quentin Gautier, Alric Althoff and Ryan Kastner
+ASAP 2019
+```
+
 
 ## License
 
