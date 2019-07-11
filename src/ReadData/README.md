@@ -42,7 +42,7 @@ Make sure to copy the [infinitam\_params.txt](src/infinitam_params.txt) file int
 
 ### TUM benchmarks
 
-Assuming you have downloaded one of the TUM benchmarks in the `~/data` directory:
+Assuming you have downloaded the 'freiburg1\_room' TUM benchmark in the `~/data` directory:
 
 
 ```

@@ -17,5 +17,5 @@ The repository is organized as follows:
 
 TODO
 
-Note that the InfiniTAM code source retains its original license, copyright Isis Innovation Limited 2014.
+Note that the InfiniTAM source code retains its original license, copyright Isis Innovation Limited 2014.
 
